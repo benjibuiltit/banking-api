@@ -10,4 +10,29 @@ datasource db {
 model Customer {
   id    Int     @default(autoincrement()) @id
   name  String  
+  accounts Account[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Account {
+  id  Int   @default(autoincrement()) @id
+  balance BigInt
+  Customer   Customer @relation(fields: [customerId], references: [id])
+  customerId Int
+  transfersFrom Transfer[]  @relation("TransferFromAccount")
+  transfersTo Transfer[] @relation("TransferToAccount")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Transfer {
+  id String      @id @default(uuid())
+  amount  BigInt
+  fromAccount Account @relation("TransferFromAccount", fields: [fromAccountId], references: [id])
+  fromAccountId Int
+  toAccount Account @relation(name: "TransferToAccount", fields: [toAccountId], references: [id])
+  toAccountId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
