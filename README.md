@@ -20,6 +20,11 @@ While modern banks have evolved to serve a plethora of functions, at their core,
   - Retrieve transfer history for a given account.
 - Write tests for your business logic
 
+### My Notes
+Entities: Users, Customer, Account, Transfers
+Should be authenticated - internal API, bank employees are consumers
+
+
 Feel free to pre-populate your customers with the following:
 
 ```json
