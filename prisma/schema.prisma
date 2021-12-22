@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Customer {
-  id    Int     @default(autoincrement()) @id
+  id    String     @default(uuid()) @id
   name  String  
   accounts Account[]
   createdAt DateTime @default(now())
@@ -16,12 +16,14 @@ model Customer {
 }
 
 model Account {
-  id  Int   @default(autoincrement()) @id
+  id  String   @default(uuid()) @id
+  name String?
   balance BigInt
-  Customer   Customer @relation(fields: [customerId], references: [id])
-  customerId Int
+  customer   Customer @relation(fields: [customerId], references: [id])
+  customerId String
   transfersFrom Transfer[]  @relation("TransferFromAccount")
   transfersTo Transfer[] @relation("TransferToAccount")
+  deposits Deposit[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -30,9 +32,16 @@ model Transfer {
   id String      @id @default(uuid())
   amount  BigInt
   fromAccount Account @relation("TransferFromAccount", fields: [fromAccountId], references: [id])
-  fromAccountId Int
+  fromAccountId String
   toAccount Account @relation(name: "TransferToAccount", fields: [toAccountId], references: [id])
-  toAccountId Int
+  toAccountId String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Deposit {
+  id String @id @default(uuid())
+  amount  BigInt
+  toAccount Account @relation(fields: [accountId], references: [id])
+  accountId String
 }

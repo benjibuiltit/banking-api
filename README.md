@@ -21,7 +21,7 @@ While modern banks have evolved to serve a plethora of functions, at their core,
 - Write tests for your business logic
 
 ### My Notes
-Entities: Users, Customer, Account, Transfers
+Entities: Users, Customer, Account, Transfers, Deposits
 Should be authenticated - internal API, bank employees are consumers
 
 

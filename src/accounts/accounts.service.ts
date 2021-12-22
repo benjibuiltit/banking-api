@@ -1,11 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { CreateAccountDto } from './dto/create-account.dto';
+import { CreateAccountRequestDto } from './dto/create-account.dto';
 import { UpdateAccountDto } from './dto/update-account.dto';
 
 @Injectable()
 export class AccountsService {
-  create(createAccountDto: CreateAccountDto) {
-    return 'This action adds a new account';
+  create(createAccountDto: CreateAccountRequestDto) {
+    // Execute nested write to create an account, and
+    // a deposit.
+    return createAccountDto;
   }
 
   findAll() {
