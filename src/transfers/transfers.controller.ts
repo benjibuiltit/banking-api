@@ -1,34 +1,24 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { TransfersService } from './transfers.service';
-import { CreateTransferDto } from './dto/create-transfer.dto';
-import { UpdateTransferDto } from './dto/update-transfer.dto';
+import { CreateTransferRequest } from './dto/create-transfer.dto';
+import {
+  ApiConflictResponse,
+  ApiCreatedResponse,
+  ApiNotFoundResponse,
+  ApiTags,
+} from '@nestjs/swagger';
+import { Transfer } from './entities/transfer.entity';
 
+@ApiTags('transfers')
 @Controller('transfers')
 export class TransfersController {
   constructor(private readonly transfersService: TransfersService) {}
 
+  @ApiCreatedResponse({ type: Transfer })
+  @ApiConflictResponse()
+  @ApiNotFoundResponse()
   @Post()
-  create(@Body() createTransferDto: CreateTransferDto) {
+  create(@Body() createTransferDto: CreateTransferRequest) {
     return this.transfersService.create(createTransferDto);
-  }
-
-  @Get()
-  findAll() {
-    return this.transfersService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.transfersService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTransferDto: UpdateTransferDto) {
-    return this.transfersService.update(+id, updateTransferDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.transfersService.remove(+id);
   }
 }

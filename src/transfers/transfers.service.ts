@@ -1,11 +1,29 @@
-import { Injectable } from '@nestjs/common';
-import { CreateTransferDto } from './dto/create-transfer.dto';
-import { UpdateTransferDto } from './dto/update-transfer.dto';
+import { BadRequestException, Injectable } from '@nestjs/common';
+import { AccountsService } from 'src/accounts/accounts.service';
+import { CreateTransferRequest } from './dto/create-transfer.dto';
+import { TransfersRepository } from './transfers.repo';
 
 @Injectable()
 export class TransfersService {
-  create(createTransferDto: CreateTransferDto) {
-    return 'This action adds a new transfer';
+  constructor(
+    private accountsService: AccountsService,
+    private transfersRepo: TransfersRepository,
+  ) {}
+
+  async create(transferRequest: CreateTransferRequest) {
+    // Verify we're transferring between two separate accounts
+    if (transferRequest.fromAccountId === transferRequest.toAccountId) {
+      throw new BadRequestException({
+        message: 'Cannot transfer from and to the same account.',
+      });
+    }
+
+    // Verify the receiving account exist
+    await this.accountsService.getAccountById({
+      accountId: transferRequest.toAccountId,
+    });
+
+    return this.transfersRepo.transferTransaction(transferRequest);
   }
 
   findAll() {
@@ -14,13 +32,5 @@ export class TransfersService {
 
   findOne(id: number) {
     return `This action returns a #${id} transfer`;
-  }
-
-  update(id: number, updateTransferDto: UpdateTransferDto) {
-    return `This action updates a #${id} transfer`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} transfer`;
   }
 }
