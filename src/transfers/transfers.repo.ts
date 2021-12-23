@@ -4,7 +4,7 @@ import {
   InternalServerErrorException,
   Logger,
 } from '@nestjs/common';
-import { PrismaService } from 'src/prisma.service';
+import { PrismaService } from '../prisma.service';
 import { CreateTransferRequest } from './dto/create-transfer.dto';
 import { PrismaClient } from '@prisma/client';
 

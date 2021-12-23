@@ -17,8 +17,8 @@ import {
 import { AccountsService } from './accounts.service';
 import { CreateAccountRequest } from './dto/create-account.dto';
 import { Account } from './entities/account.entity';
-import { TransfersService } from 'src/transfers/transfers.service';
-import { Transfer } from 'src/transfers/entities/transfer.entity';
+import { TransfersService } from '../transfers/transfers.service';
+import { Transfer } from '../transfers/entities/transfer.entity';
 @ApiTags('accounts')
 @Controller('accounts')
 export class AccountsController {

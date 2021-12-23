@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { AccountsService } from 'src/accounts/accounts.service';
+import { AccountsService } from '../accounts/accounts.service';
 import { CreateTransferRequest } from './dto/create-transfer.dto';
 import { TransfersRepository } from './transfers.repo';
 

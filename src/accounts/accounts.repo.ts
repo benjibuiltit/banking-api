@@ -5,7 +5,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { CreateAccountRequest } from './dto/create-account.dto';
-import { PrismaService } from 'src/prisma.service';
+import { PrismaService } from '../prisma.service';
 import { GetAccountParams } from './dto/get-account.dto';
 
 @Injectable()
