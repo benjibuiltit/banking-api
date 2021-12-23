@@ -20,10 +20,6 @@ While modern banks have evolved to serve a plethora of functions, at their core,
   - Retrieve transfer history for a given account. ✅
 - Write tests for your business logic
 
-### My Notes
-Entities: Users, Customer, Account, Transfers, Deposits
-Should be authenticated - internal API, bank employees are consumers
-
 
 Feel free to pre-populate your customers with the following:
 
@@ -66,3 +62,13 @@ Please organize, design, test and document your code as if it were going into pr
 All the best and happy coding,
 
 The JupiterOne Team
+
+
+### Guide
+I've built the banking API using NestJS/TypeScript/Postgres. You can stand up the postgres dependency via `docker-compose up`.
+
+Start the server by running `npm install` and then `npm start`.
+
+I ran out of time so my test suite is initialized, but is missing true testing around the business logic. I also would have liked
+to have added authentication since it was noted that the API was intended for an internal user base (bank employees). Despite it's
+flaws, I hope y'all like what you see here and I get the opportunity to discuss with y'all.
