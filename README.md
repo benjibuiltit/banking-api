@@ -16,8 +16,8 @@ While modern banks have evolved to serve a plethora of functions, at their core,
     single customer may have multiple bank accounts. ✅
   - Transfer amounts between any two accounts, including those owned by
     different customers. ✅
-  - Retrieve balances for a given account.
-  - Retrieve transfer history for a given account.
+  - Retrieve balances for a given account. ✅
+  - Retrieve transfer history for a given account. ✅
 - Write tests for your business logic
 
 ### My Notes

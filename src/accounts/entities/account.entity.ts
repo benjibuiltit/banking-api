@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class Account {
   @ApiProperty({
-    description: 'Account ID.',
+    description: 'The unique account ID.',
   })
   id: string;
 

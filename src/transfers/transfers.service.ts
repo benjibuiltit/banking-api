@@ -26,11 +26,7 @@ export class TransfersService {
     return this.transfersRepo.transferTransaction(transferRequest);
   }
 
-  findAll() {
-    return `This action returns all transfers`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} transfer`;
+  getByAccountId(id: string) {
+    return this.transfersRepo.getAccountTransfers(id);
   }
 }

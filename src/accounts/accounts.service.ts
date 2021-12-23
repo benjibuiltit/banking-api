@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { AccountsRepository } from './accounts.repo';
 import { CreateAccountRequest } from './dto/create-account.dto';
 import { GetAccountParams } from './dto/get-account.dto';
+
 @Injectable()
 export class AccountsService {
   constructor(private accountsRepo: AccountsRepository) {}

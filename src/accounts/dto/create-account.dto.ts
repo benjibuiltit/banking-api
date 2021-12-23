@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import {
   IsInt,
   IsNotEmpty,
@@ -9,9 +9,10 @@ import {
 } from 'class-validator';
 
 export class CreateAccountRequest {
-  @IsOptional()
   @IsInt()
+  @IsOptional()
   @Min(0)
+  @ApiPropertyOptional()
   @ApiProperty({
     description:
       'The deposit amount (in pence) to initialize the account with.',
@@ -27,6 +28,7 @@ export class CreateAccountRequest {
 
   @IsOptional()
   @IsString()
+  @ApiPropertyOptional()
   @ApiProperty({
     description: 'A customer defined name for the account.',
   })

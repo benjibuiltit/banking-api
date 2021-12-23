@@ -12,12 +12,12 @@ export class Transfer {
   amount: number;
 
   @ApiProperty({
-    description: 'The id of the receiving account.',
+    description: 'The ID of the receiving account.',
   })
   fromAccountId: string;
 
   @ApiProperty({
-    description: 'The id of the sending account.',
+    description: 'The ID of the sending account.',
   })
   toAccountId: string;
 

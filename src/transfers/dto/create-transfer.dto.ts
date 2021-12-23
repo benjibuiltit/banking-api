@@ -18,7 +18,7 @@ export class CreateTransferRequest {
   @IsInt()
   @Min(0)
   @ApiProperty({
-    description: 'The amount to be transferred in pence.',
+    description: 'The amount (in pence) to be transferred.',
   })
   amount: number;
 }

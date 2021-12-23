@@ -64,4 +64,24 @@ export class TransfersRepository {
       }
     }
   }
+
+  async getAccountTransfers(id: string) {
+    try {
+      return await this.prisma.transfer.findMany({
+        where: {
+          OR: [
+            {
+              fromAccountId: id,
+            },
+            {
+              toAccountId: id,
+            },
+          ],
+        },
+      });
+    } catch (err) {
+      Logger.error(err);
+      throw new InternalServerErrorException();
+    }
+  }
 }
