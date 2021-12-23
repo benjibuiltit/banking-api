@@ -33,7 +33,7 @@ async function main() {
             create: [
               {
                 id: index ? undefined : customer.accountId,
-                balance: index ? BigInt(1000) : BigInt(5000),
+                balance: index ? 1000 : 5000,
                 transfersFrom: index
                   ? {
                       create: [
