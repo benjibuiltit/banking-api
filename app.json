@@ -1,0 +1,12 @@
+{
+  "name": "Banking API",
+  "scripts": {
+    "dokku": {
+      "predeploy": "prisma migrate deploy"
+    }
+  },
+  "image": "gliderlabs/herokuish",
+  "addons": [
+    "dokku-postgres"
+  ]
+}
